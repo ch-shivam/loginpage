@@ -9,10 +9,16 @@ import time
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# SQLite Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+
+import mysql.connector
+ 
+ 
+# Connecting from the server
+conn = mysql.connector.connect(user = 'username',
+                               host = 'localhost',
+                              database = 'database_name')
+ 
+print(conn)
 
 # Twilio configuration (Replace with your credentials)
 account_sid = 'your_twilio_account_sid'
